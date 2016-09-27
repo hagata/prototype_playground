@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <title>Prototype Playground</title>
-  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/global.css">
 </head>
 <body>
 
@@ -12,6 +12,6 @@
   {% block content %} {% endblock %}
 
 
-  <script src="js/main.js"></script>
+  <script src="js/app.js"></script>
 </body>
 </html>

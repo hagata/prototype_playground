@@ -1,8 +1,9 @@
 const gulp = require('gulp');
 
 const browserSync = require('browser-sync').create();
-const sass = require('gulp-sass');
 const nunjucks = require('gulp-nunjucks-render');
+const sass = require('gulp-sass');
+const sourcemaps = require('gulp-sourcemaps');
 
 // Static server
 gulp.task('serve', function () {
@@ -16,7 +17,9 @@ gulp.task('serve', function () {
 // Sass to CSS compilation
 gulp.task('sass', function() {
   return gulp.src("source/styles/**/*.scss")
-    .pipe(sass())
+    .pipe(sourcemaps.init())
+    .pipe(sass().on('error', sass.logError))
+    .pipe(sourcemaps.write())
     .pipe(gulp.dest("_build/css"))
     .pipe(browserSync.stream());
 });
