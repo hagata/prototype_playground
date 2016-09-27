@@ -2,8 +2,10 @@ const gulp = require('gulp');
 
 const browserSync = require('browser-sync').create();
 const nunjucks = require('gulp-nunjucks-render');
+const pump = require('pump');
 const sass = require('gulp-sass');
 const sourcemaps = require('gulp-sourcemaps');
+const uglify = require('gulp-uglify');
 
 // Static server
 gulp.task('serve', function () {
@@ -20,7 +22,7 @@ gulp.task('sass', function() {
     .pipe(sourcemaps.init())
     .pipe(sass().on('error', sass.logError))
     .pipe(sourcemaps.write())
-    .pipe(gulp.dest("_build/css"))
+    .pipe(gulp.dest("_build/styles"))
     .pipe(browserSync.stream());
 });
 
@@ -35,9 +37,28 @@ gulp.task('templates', function() {
     .pipe(gulp.dest('_build'))
 });
 
+// basic scripts tasks.
+gulp.task('scripts', function(cb) {
+  pump([
+    gulp.src('source/scripts/*.js'),
+    uglify(),
+    gulp.dest('_build/scripts')
+  ],
+    cb
+  );
+});
+
+
 gulp.task('watch', function() {
   gulp.watch('./source/styles/**/*.scss', ['sass']);
   gulp.watch('./source/pages/**/*.tpl', ['templates']);
+  gulp.watch('./source/scripts/**/*.js', ['scripts']);
 });
 
-gulp.task('default', ['sass', 'templates', 'serve', 'watch']);
+gulp.task('default', [
+  'sass',
+  'templates',
+  'scripts',
+  'serve',
+  'watch'
+]);

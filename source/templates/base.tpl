@@ -4,14 +4,15 @@
 <head>
   <meta charset="UTF-8">
   <title>Prototype Playground</title>
-  <link rel="stylesheet" href="css/global.css">
+  <link rel="stylesheet" href="styles/global.css">
 </head>
 <body>
 
-  <!-- You write code for this content block in another file -->
-  {% block content %} {% endblock %}
+  {% block content %}
+  <!-- Do not write code here. See readme for templating -->
+  {% endblock %}
 
 
-  <script src="js/app.js"></script>
+  <script src="scripts/app.js"></script>
 </body>
 </html>
