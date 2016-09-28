@@ -13,6 +13,7 @@
     "eslint": "^3.6.0",
     "eslint-config-google": "^0.6.0",
     "gulp": "^3.9.1",
+    "gulp-clean": "^0.3.2",
     "gulp-nunjucks": "^2.3.0",
     "gulp-nunjucks-render": "^2.0.0",
     "gulp-sass": "^2.3.2",
