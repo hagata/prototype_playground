@@ -62,8 +62,13 @@ gulp.task('clean', function() {
 
 gulp.task('watch', function() {
   gulp.watch('source/styles/**/*.scss', ['sass']);
-  gulp.watch(['source/pages/**/*.tpl','source/templates**/*.tpl'], ['templates']);
-  gulp.watch('source/scripts/**/*.js', ['scripts']);
+  gulp.watch([
+    'source/pages/**/*.tpl',
+    'source/templates/**/*.tpl'], ['templates']);
+  gulp.watch([
+    '_build/**/*.{html,js}'])
+    .on('change', browserSync.reload);
+  gulp.watch('source/scripts/**/*.js', ['scripts'])
   gulp.watch('source/assets/**', ['copy']);
 });
 
