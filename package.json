@@ -9,7 +9,11 @@
   "author": "Genki Hagata",
   "license": "ISC",
   "devDependencies": {
+    "babel": "^6.5.2",
+    "babel-preset-es2015": "^6.16.0",
+    "babelify": "^7.3.0",
     "browser-sync": "^2.16.0",
+    "browserify": "^13.1.0",
     "eslint": "^3.6.0",
     "eslint-config-google": "^0.6.0",
     "gulp": "^3.9.1",
@@ -18,7 +22,8 @@
     "gulp-nunjucks-render": "^2.0.0",
     "gulp-sass": "^2.3.2",
     "gulp-sourcemaps": "^1.6.0",
-    "gulp-uglify": "^2.0.0",
-    "pump": "^1.0.1"
+    "vinyl-buffer": "^1.0.0",
+    "vinyl-source-stream": "^1.1.0",
+    "watchify": "^3.7.0"
   }
 }

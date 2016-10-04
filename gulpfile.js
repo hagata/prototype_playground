@@ -1,15 +1,71 @@
 const gulp = require('gulp');
 
+const browserify = require('browserify');
 const browserSync = require('browser-sync').create();
+const buff = require('vinyl-buffer');
 const clean = require('gulp-clean');
 const nunjucks = require('gulp-nunjucks-render');
-const pump = require('pump');
 const sass = require('gulp-sass');
+const source = require('vinyl-source-stream');
 const sourcemaps = require('gulp-sourcemaps');
-const uglify = require('gulp-uglify');
+const watchify = require('watchify');
+
+/**
+ * ES6 module support, Babel compilation.
+ * @param {Boolean} watch call the function with or without the watch flag.
+ */
+function compile(watch) {
+  var bundler = watchify(browserify('./source/scripts/app.js', {
+    debug: true
+  })
+  .transform("babelify", {
+    presets: ["es2015"]
+  }));
+
+  /**
+   * Bundling operation.
+   */
+  function rebundle() {
+    bundler.bundle()
+      .on('error', function(err) {
+        console.error(err);
+        this.emit('end');
+      })
+      .pipe(source('app.js'))
+      .pipe(buff())
+      .pipe(sourcemaps.init({loadMaps: true}))
+      .pipe(sourcemaps.write())
+      .pipe(gulp.dest('./_build/scripts/'));
+  }
+
+  if (watch) {
+    bundler.on('update', function() {
+      console.log('-> bundling...');
+      rebundle();
+    });
+  }
+
+  rebundle();
+}
+
+/**
+ * Verbose method to call compile.
+ * @return {function} Function call to compile.
+ */
+function watch() {
+  return compile(true);
+}
+
+gulp.task('build', function() {
+  return compile();
+});
+
+gulp.task('js-watch', function() {
+  return watch();
+});
 
 // Static server
-gulp.task('serve', function () {
+gulp.task('serve', function() {
   browserSync.init({
     server: {
       baseDir: "./_build"
@@ -35,18 +91,7 @@ gulp.task('templates', function() {
     .pipe(nunjucks({
       path: ['source/templates']
     }))
-    .pipe(gulp.dest('_build'))
-});
-
-// basic scripts tasks.
-gulp.task('scripts', function(cb) {
-  pump([
-    gulp.src('source/scripts/*.js'),
-    uglify(),
-    gulp.dest('_build/scripts')
-  ],
-    cb
-  );
+    .pipe(gulp.dest('_build'));
 });
 
 gulp.task('copy', ['clean'], function() {
@@ -68,15 +113,14 @@ gulp.task('watch', function() {
   gulp.watch([
     '_build/**/*.{html,js}'])
     .on('change', browserSync.reload);
-  gulp.watch('source/scripts/**/*.js', ['scripts'])
   gulp.watch('source/assets/**', ['copy']);
 });
 
 gulp.task('default', [
   'sass',
   'templates',
-  'scripts',
   'copy',
   'serve',
-  'watch'
+  'watch',
+  'js-watch'
 ]);
