@@ -1,4 +1,4 @@
 // App Start.
 (function() {
-  console.log('beep…boop…beep\n🙇 hello world!');
+  console.warn('beep…boop…beep\n%c🙇 hello world!', 'font-size:  16px');
 })();

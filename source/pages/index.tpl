@@ -1,5 +1,6 @@
 {% extends '../templates/base.tpl' %}
-
 {% block content %}
-<pre>HELLO WORLD :D</pre>
+
+{% include 'modules/playground-intro.tpl' %}
+
 {% endblock %}

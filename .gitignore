@@ -1,2 +1,3 @@
 node_modules/
 _build/
+.generated_data
