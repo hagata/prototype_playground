@@ -3,38 +3,26 @@ What is it? This is a base environment, with the minimum amount of setup and dep
 
 You'll be setting up Node, a Javascript environment that lets you code on your local machine. With Node, you can use NPM and Gulp. NPM is a package manager that lets you download useful tools to help you code. Gulp is a task runner that automates whatever you tell it to. It's commonly used to check for errors, compile your code, and auto refresh your browser.
 
+# Prerequisities
+* [XCode](https://itunes.apple.com/cg/app/xcode/id497799835?mt=12)
+* [Node.js](https://nodejs.org/en/)
+  1. If you have a permissions issue, run this in Terminal `sudo chown -R $(whoami) $(npm config get prefix)/{lib/node_modules,bin,share}`
+* Gulp
+  2. Run `npm install gulp -g` in Terminal
+
 # Getting started
-1. Install [Atom](https://atom.io/) or another text editor of your choice
-2. Download XCode from the App Store
-3. Open the Terminal app
-4. Install Homebrew. This makes it [easier to install Node](http://blog.teamtreehouse.com/install-node-js-npm-mac ).
-    1. In Terminal, type ``ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)" ``
-    2. You’ll see messages in the Terminal explaining what you need to do to complete the installation process.
-5. Install Node and NPM
-    1. Once Homebrew is installed, type ```brew install node```
-    2. To make sure Node is installed, type `node -v`. You should see the version that's installed, ex:  `v0.10.31`.
-    3. Make sure NPM is installed by typing `npm -v`
-6. Install Gulp globally
-    1. Type `npm install -g gulp`
-7. Create a folder for your new project and navigate to it in Terminal
-    1. You can use the `cd` command. For example: `cd /Applications/XAMPP/xamppfiles/htdocs/my-project`
-    2. You can also drag your folder onto the Terminal app in your dock.
-8. Create a package.json file for your project. This will keep track of dependencies.
-    1. Type `npm init` and answer the questions it asks you
-9. Install Gulp locally
-    1. Type `npm install --save-dev gulp`. The `--save-dev` bit saves gulp as a dependency in your package.json file.
-10. Download the prototype playground and place it in your project folder
-    1. Click the green Clone or Download button at the top of this page and download the ZIP.
-11. Download Node modules
+1. Download the prototype playground from Github
+2. Drag and drop the folder onto Terminal in your dock
+3. Download Node modules
     1. In Terminal type `npm install`.
-12. Initialize Gulp
+4. Initialize Gulp
     1. Type `gulp`.
-13. Open your project folder in your text editor and start coding!
+5. Open your project folder in your text editor and start coding!
 
 # Inside the Playground
 Take a look at the file structure of your new project. The `/source` folder is where all your editable code lives. Once you start saving changes, the playground will generate a `/_build` folder where your compiled code lives and is served to your browser. Edit the files in `/source` not `/_build`!
 
-The playground will compile and concatenate all the Javascript files in `/source/scripts` and the SASS files in `/source/styles`. You can keep your code neat by separating them into different .js and .scss files. You could, for instance, have different stylesheets for multiple breakpoints.
+The playground will compile and concatenate all the Javascript files in `/source/scripts` and the SASS files in `/source/styles`. You can keep your code neat by separating them into different .js and .scss files.
 
 The `.tpl` files in `source/pages/` are your `.html` files. To learn more, read the Templating section below.
 
@@ -68,6 +56,16 @@ The next thing to know is the `{% block %}` concept. A block is a placeholder in
 <h1>your html content here</h1>
 {% endblock %}
 ```
+
+# Gulp tasks
+This project leverages the power of Gulp. You may use the following gulp commands as needed.
+
+| command | description |
+| ------ | ------- |
+| watch | Runs necessary build scripts as files are modified. |
+| sass | Compile sass to `/_build` directory |
+| serve | Starts a browserSync server at `localhost:3000` |
+
 
 # Optional plugins for your text editor
 * [atom-beautify](https://atom.io/packages/atom-beautify) for higlighting nunjucks syntax in Atom
