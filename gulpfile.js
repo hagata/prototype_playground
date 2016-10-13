@@ -4,6 +4,9 @@ const browserify = require('browserify');
 const browserSync = require('browser-sync').create();
 const buff = require('vinyl-buffer');
 const clean = require('gulp-clean');
+const data = require('gulp-data');
+const fs = require('fs');
+const merge = require('gulp-merge-json');
 const nunjucks = require('gulp-nunjucks-render');
 const sass = require('gulp-sass');
 const source = require('vinyl-source-stream');
@@ -56,6 +59,15 @@ function watch() {
   return compile(true);
 }
 
+/**
+ * Merges all data into a single json file for template use.
+ */
+gulp.task('data', function() {
+  return gulp.src('source/data/**/*.json')
+    .pipe(merge('.generated_data'))
+    .pipe(gulp.dest('source/data/'));
+});
+
 gulp.task('build', function() {
   return compile();
 });
@@ -84,10 +96,12 @@ gulp.task('sass', function() {
 });
 
 // Templates compilation
-gulp.task('templates', function() {
-  // Gets .tpl  files in pages
+gulp.task('templates', ['data'], function() {
   return gulp.src('source/pages/*.tpl')
-    // Renders templates from source/templates with nunjucks.
+    .pipe(data((f) => {
+      const file = fs.readFileSync('source/data/.generated_data');
+      return JSON.parse(file);
+    }))
     .pipe(nunjucks({
       path: ['source/templates']
     }))
