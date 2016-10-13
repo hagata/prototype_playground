@@ -5,10 +5,10 @@ You'll be setting up Node, a Javascript environment that lets you code on your l
 
 # Prerequisities
 * [XCode](https://itunes.apple.com/cg/app/xcode/id497799835?mt=12)
-* [Node.js](https://nodejs.org/en/)
-  1. If you have a permissions issue, run this in Terminal `sudo chown -R $(whoami) $(npm config get prefix)/{lib/node_modules,bin,share}`
+* [Node.js with npm](https://nodejs.org/en/)
+  - *If you have a permissions issue, run this in Terminal `sudo chown -R $(whoami) $(npm config get prefix)/{lib/node_modules,bin,share}`*
 * Gulp
-  2. Run `npm install gulp -g` in Terminal
+  * Run `npm install gulp -g` in Terminal
 
 # Getting started
 1. Download the prototype playground from Github
