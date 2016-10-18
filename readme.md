@@ -3,6 +3,8 @@ What is it? This is a base environment, with the minimum amount of setup and dep
 
 You'll be setting up Node, a Javascript environment that lets you code on your local machine. With Node, you can use NPM and Gulp. NPM is a package manager that lets you download useful tools to help you code. Gulp is a task runner that automates whatever you tell it to. It's commonly used to check for errors, compile your code, and auto refresh your browser.
 
+### [Documentation and Guides](https://hagata.github.io/prototype_playground/)
+
 # Prerequisities
 * [XCode](https://itunes.apple.com/cg/app/xcode/id497799835?mt=12)
 * [Node.js with npm](https://nodejs.org/en/)
