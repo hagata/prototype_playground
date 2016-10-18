@@ -1,9 +1,0 @@
-{
-    "globals": {
-        "document": false,
-        "navigator": false,
-        "window": false
-    },
-    "extends": "google",
-    "installedESLint": true
-}
