@@ -15,3 +15,16 @@ Posts are automatically added to the side bar navigation based on the directory 
     └── _posts
         └── 2016-10-18-how-to-loop-with-nunjucks.md
 ```
+
+# Tips
+
+### Including nunjucks syntax in code blocks
+Jekyll and Nunjucks share the same syntax. This can be frustrating when you want to add example Nunjucks code to an article in a markdown code block.
+
+To fix this issue, wrap the {%raw%}{% %}{%endraw%} blocks in a `raw` block.
+
+```
+{% raw %}
+    Your example Nunjucks code with {%%} syntax goes here.
+{% endraw %}
+```
