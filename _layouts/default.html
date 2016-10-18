@@ -29,6 +29,9 @@
                     </div>
 
                     <div id="content" class="col-sm-10">
+                        {% if page.author %}
+                        <span class="content__author">Written by: {{ page.author }}</span>
+                        {% endif %}
                         {{ content }}
                     </div>
                 {% else %}

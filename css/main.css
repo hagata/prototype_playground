@@ -46,6 +46,11 @@ code {
     margin-top: 0;
 }
 
+.content__author {
+    font-size: 13px;
+    color: #616161;
+    font-weight: 500;
+}
 
 #navigation {
     font-size: 0.9em;
@@ -62,20 +67,22 @@ code {
 }
 
 body.rtl {
-	direction: rtl;
+    direction: rtl;
 }
 
 body.rtl #header .brand {
-	float: right;
+    float: right;
     margin-left: 5px;
 }
+
 body.rtl .row-fluid [class*="span"] {
-	float: right !important;
-	margin-left: 0;
-	margin-right: 2.564102564102564%;
+    float: right !important;
+    margin-left: 0;
+    margin-right: 2.564102564102564%;
 }
+
 body.rtl .row-fluid [class*="span"]:first-child {
-	margin-right: 0;
+    margin-right: 0;
 }
 
 body.rtl ul, body.rtl ol {
@@ -83,12 +90,12 @@ body.rtl ul, body.rtl ol {
 }
 
 table {
-  margin-bottom: 1rem;
-  border: 1px solid #e5e5e5;
-  border-collapse: collapse;
+    margin-bottom: 1rem;
+    border: 1px solid #e5e5e5;
+    border-collapse: collapse;
 }
 
 td, th {
-  padding: .25rem .5rem;
-  border: 1px solid #e5e5e5;
+    padding: .25rem .5rem;
+    border: 1px solid #e5e5e5;
 }
