@@ -33,7 +33,8 @@ You'll notice this line of code in `source/pages/index.tpl`:
 This means you're including all the html code from the `base.tpl` template in your `index.tpl` file. `base.tpl` would be a good place to hold global elements like a nav and footer.   
 
 ## Individualizing your template
-The next thing to know is the `{% raw %}{% block %}{% endraw %}` concept. A block is a placeholder in the base template for unique content. In our `source/templates/base.tpl` file we're creating a `block` called `content` which we use to inject html content into the `<body>` tag. This is used in `index.tpl`:
+The next thing to know is the `block` concept. A block is a placeholder in the base template for unique content. In our `source/templates/base.tpl` file we're creating a `block` called `content` which we use to inject html content into the `<body>` tag. This is used in `index.tpl`:
+
 ```html
 {% raw %}
 {% block content %}
